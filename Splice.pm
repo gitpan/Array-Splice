@@ -13,7 +13,7 @@ our @EXPORT_OK = qw(
    splice_aliases push_aliases unshift_aliases	
 );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 bootstrap Array::Splice $VERSION;
 
@@ -88,12 +88,12 @@ This is unlikely to be useful for tied arrays but for the sake of
 uniformity, splice_aliases() tries to call a SPLICE_ALIASES() method
 on the object to which the array is tied.
 
-=item push_alaises ARRAY, LIST
+=item push_aliases ARRAY, LIST
 
 A wrapper for C<splice_aliases> that emulates the builtin C<push>
 except that LIST gets spliced directly into ARRAY rather being copied.
 
-=item unshift_alaises ARRAY, LIST
+=item unshift_aliases ARRAY, LIST
 
 A wrapper for C<splice_aliases> that emulates the builtin C<unshift>
 except that LIST gets spliced directly into ARRAY rather being copied.
@@ -102,8 +102,10 @@ except that LIST gets spliced directly into ARRAY rather being copied.
 
 =head1 AUTHOR
 
-Brian McCauley, E<lt>nobull@cpan.org<gt>
+Brian McCauley, E<lt>nobull@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
 L<perlfunc/splice>.
+
+=cut
