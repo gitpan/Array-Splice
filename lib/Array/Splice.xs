@@ -18,24 +18,21 @@ INIT:
     I32 diff;
     SV **tmparyval = 0;
     MAGIC *mg;
-    register SV **xxMARK;
     register SV **src;
     register SV **dst;
 PPCODE:
    if ( !SvROK(array) || SvTYPE(SvRV(array)) != SVt_PVAV ) {
-	croak("first argument to _splice() not an array");
+	croak("first argument to Array::Splice::_splice() not an array");
    }
    ary = (AV*) SvRV(array);
 
    if ((mg = SvTIED_mg((SV*)ary, 'P'))) {
-	croak("_splice() not implemented for tied arrays");
+	croak("Array::Splice::_splice() not implemented for tied arrays");
    }
 
    i = offset;
    if (offset < 0)
       offset += AvFILLp(ary) + 1;
-   else
-      offset -= PL_curcop->cop_arybase;
    if (offset < 0)
       croak(PL_no_aelem, i);
    if (length < 0) {
@@ -45,7 +42,7 @@ PPCODE:
    }
    if (offset > AvFILLp(ary) + 1) {
       if (ckWARN(WARN_MISC))
-	 warn("lsplice() offset past end of array" );
+	 warn("Array::Splice::_splice() offset past end of array" );
       offset = AvFILLp(ary) + 1;
     }
     after = AvFILLp(ary) + 1 - (offset + length);
@@ -59,6 +56,11 @@ PPCODE:
 
     newlen = items - 3;
     diff = newlen - length;
+
+    /* inc refcounts now: avoid problems if they're from the array */
+    for (src = &ST(3), i = newlen; i; i--) {
+      SvREFCNT_inc(*src++);
+    }	 
 
     if (diff < 0) {				/* shrinking the area */
 	if (newlen) {
@@ -119,7 +121,7 @@ PPCODE:
 	if (newlen) {
 	    for (src = tmparyval, dst = AvARRAY(ary) + offset;
 	      newlen; newlen--) {
-		SvREFCNT_inc(*dst++ = *src++);
+		*dst++ = *src++;
 	    }
 	    Safefree(tmparyval);
 	}
@@ -161,7 +163,7 @@ PPCODE:
 	}
 
 	for (src = &ST(3), dst = AvARRAY(ary) + offset; newlen; newlen--) {
-	    SvREFCNT_inc(*dst++ = *src++);
+	    *dst++ = *src++;
 	}
 	if (GIMME == G_ARRAY) {			/* copy return vals to stack */
 	    if (length) {

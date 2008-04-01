@@ -1,34 +1,45 @@
-Array::Splice version 0.01
-==========================
+Array-Splice
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+This module does splicing of arrays for real.  That is it exports
+funtions the do exactly the same as the builtin splice() function and
+the push()/unsift() functions except that the inserted elements are
+existing scalar values not copies of them.
 
-A README file is required for CPAN modules since CPAN extracts the
-README file from a module distribution so that people browsing the
-archive can use it get an idea of the modules uses. It is usually a
-good idea to provide version information here so that people can
-decide whether fixes for the module are worth downloading.
+This same functionality is provided by Data::Alias.
 
 INSTALLATION
 
-To install this module type the following:
+To install this module, run the following commands:
 
-   perl Makefile.PL
-   make
-   make test
-   make install
+    perl Build.PL
+    ./Build
+    ./Build test
+    ./Build install
 
-DEPENDENCIES
 
-none
+SUPPORT AND DOCUMENTATION
+
+After installing, you can find documentation for this module with the perldoc command.
+
+    perldoc Array::Splice
+
+You can also look for information at:
+
+    Search CPAN
+        http://search.cpan.org/dist/Array-Splice
+
+    CPAN Request Tracker:
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Array-Splice
+
+    AnnoCPAN, annotated CPAN documentation:
+        http://annocpan.org/dist/Array-Splice
+
+    CPAN Ratings:
+        http://cpanratings.perl.org/d/Array-Splice
 
 COPYRIGHT AND LICENCE
 
-You may copy, change and distribute this software under the same terms
-as Perl.
+Copyright (C) 2007 Brian McCauley
 
-Copyright (C) 2004 Brian McCauley <nobull@cpan.org>
-
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.

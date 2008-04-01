@@ -13,7 +13,7 @@ our @EXPORT_OK = qw(
    splice_aliases push_aliases unshift_aliases	
 );
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 bootstrap Array::Splice $VERSION;
 
@@ -100,12 +100,22 @@ except that LIST gets spliced directly into ARRAY rather being copied.
 
 =back 
 
+=head1 KNOWN ISSUES
+
+As of Perl 5.8.9 L<Data::Alias> works on all platforms. That largely
+renders this module obsolescent. On the other hand this module does
+not employ any of the deep black magic that L<Data::Alias> uses.
+
+The value of C<$[> is ignored because it works differently in 5.10
+from it did previously and since nobody should be using it anyhow
+there's no point making an effort to support it.
+
 =head1 AUTHOR
 
 Brian McCauley, E<lt>nobull@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
-L<perlfunc/splice>.
+L<perlfunc/splice>, L<Data::Alias>.
 
 =cut

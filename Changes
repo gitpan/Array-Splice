@@ -6,3 +6,10 @@ Revision history for Perl extension Array::Splice.
 0.02  Wed Jan 14 18:12:17 2004
 	- POD typos;
 
+0.03  Aug 2007
+	- Improve test suite
+	- Fix perlbug bug [perl #30568]
+	- Restructure directories in canonical fashion
+	- Use Module::Build as builder
+        - Ignore $[
+ 
