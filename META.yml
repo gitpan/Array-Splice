@@ -1,6 +1,6 @@
 ---
 name: Array-Splice
-version: 0.03
+version: 0.04
 author:
   - 'Brian McCauley <nobull@cpan.org>'
 abstract: Splice aliases into arrays
@@ -12,7 +12,7 @@ build_requires:
 provides:
   Array::Splice:
     file: lib/Array/Splice.pm
-    version: 0.03
+    version: 0.04
 generated_by: Module::Build version 0.280801
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

@@ -12,4 +12,7 @@ Revision history for Perl extension Array::Splice.
 	- Restructure directories in canonical fashion
 	- Use Module::Build as builder
         - Ignore $[
+
+0.04  Wed 2 April 2008
+        - Fix direstory delimiters in boilerplate.t
  

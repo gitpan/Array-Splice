@@ -13,7 +13,7 @@ our @EXPORT_OK = qw(
    splice_aliases push_aliases unshift_aliases	
 );
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 bootstrap Array::Splice $VERSION;
 
